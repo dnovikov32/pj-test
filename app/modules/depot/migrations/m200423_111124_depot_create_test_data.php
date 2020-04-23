@@ -36,8 +36,6 @@ class m200423_111124_depot_create_test_data extends Migration
         foreach ($driverIds as $driverId) {
             $busKeys = (array) array_rand($busIds, rand(1, count($busIds)));
 
-            echo '<pre>$busKeys'; print_r($busKeys);echo '</pre>';
-
             foreach ($busKeys as $busKey) {
                 $this->insert('{{%driver_bus}}', array(
                     'driver_id' => $driverId,
