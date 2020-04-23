@@ -1,0 +1,15 @@
+.idea
+app/vendor
+nbproject
+node_modules
+logs
+
+*.map
+*.log
+.directory
+.bash_history
+.mysql_history
+#.env
+dump.sql
+package-lock.json
+npm-debug.log

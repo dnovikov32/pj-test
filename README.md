@@ -1,2 +1,0 @@
-# pj-test
-PJ Test

@@ -1,0 +1,41 @@
+{
+  "name": "yiicom/pj-test",
+  "description": "PJ test",
+  "type": "website",
+  "prefer-stable": true,
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Dmitriy Novikov",
+      "email": "dn@t1000.su"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.0",
+    "ext-mbstring": "*",
+    "vlucas/phpdotenv": "^2.0",
+    "yiisoft/yii2": "dev-master",
+    "dmstr/yii2-migrate-command": "^0.3.0"
+  },
+  "require-dev": {
+    "yiisoft/yii2-debug": "^2.0.0"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "frontend\\": "app/frontend",
+      "backend\\": "app/backend",
+      "console\\": "app/console",
+      "modules\\": "app/modules"
+    }
+  },
+  "config": {
+    "vendor-dir": "app/vendor",
+    "bin-dir": "app/vendor/bin"
+  }
+}
