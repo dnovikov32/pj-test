@@ -45,6 +45,9 @@ return [
 
     ],
     'params' => [
-
+        'googleMapApiKey' => getenv('GOOGLE_MAP_API_KEY'),
+        'pagination' => [
+            'defaultPageSize' => 5
+        ]
     ],
 ];

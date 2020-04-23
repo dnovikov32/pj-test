@@ -22,11 +22,13 @@ return [
             ],
         ],
         'user' => [
-            'identityClass' => yiicom\backend\models\AdminUser::class,
+            'identityClass' => \yii\web\User::class,
         ],
     ],
     'modules' => [
-
+        'depot' => [
+            'class' => modules\depot\backend\Module::class,
+        ],
     ],
     'params' => [
 

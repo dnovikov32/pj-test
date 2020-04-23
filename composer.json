@@ -15,7 +15,8 @@
     "ext-mbstring": "*",
     "vlucas/phpdotenv": "^2.0",
     "yiisoft/yii2": "dev-master",
-    "dmstr/yii2-migrate-command": "^0.3.0"
+    "dmstr/yii2-migrate-command": "^0.3.0",
+    "yiisoft/yii2-httpclient": "^2.0.0"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "^2.0.0"

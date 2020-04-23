@@ -15,7 +15,7 @@ return [
     ],
     'params' => [
         'yii.migrations' => [
-
+            '@modules/depot/migrations',
         ],
     ],
 ];

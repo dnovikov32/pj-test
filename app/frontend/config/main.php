@@ -27,7 +27,9 @@ return [
         ],
     ],
     'modules' => [
-
+        'depot' => [
+            'class' => modules\depot\frontend\Module::class,
+        ],
     ],
     'params' => [
 
