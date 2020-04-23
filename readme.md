@@ -27,7 +27,10 @@ Access it in your browser by opening
 - frontend: http://127.0.0.1:20080
 - backend: http://127.0.0.1:21080
     
-All API functionality is in the app/modules/depot/backend   
+All API functionality is in the app/modules/depot/backend  
+ 
+Default pagination page size set to 5 in app/common/config/main.php params section  
+ 
  
 API requests examples:
 ```text
