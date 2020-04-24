@@ -45,5 +45,5 @@ http://127.0.0.1:21080/depot/api/bus/list?speed=110
 
 # Travel time
 http://127.0.0.1:21080/depot/api/driver/time?from=Москва&to=Тула
-
+http://127.0.0.1:21080/depot/api/driver/time?from=Москва&to=Тула&page=1&id=9
 ```

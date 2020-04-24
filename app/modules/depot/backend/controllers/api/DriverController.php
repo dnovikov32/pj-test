@@ -9,7 +9,8 @@ use yii\rest\Controller;
 use yii\data\ActiveDataProvider;
 use modules\depot\backend\models\DriverSearch;
 use modules\depot\backend\models\DriverTimeSearch;
-use modules\depot\common\GoogleMapClient;
+use modules\depot\common\client\GoogleMapClient;
+use modules\depot\common\client\DummyHttpClient;
 
 class DriverController extends Controller
 {
@@ -35,7 +36,11 @@ class DriverController extends Controller
         }
 
         try {
-            $client = new GoogleMapClient(new Client(), \Yii::$app->params['googleMapApiKey']);
+
+//            $client = new Client();
+            $client = new DummyHttpClient();
+
+            $client = new GoogleMapClient($client, \Yii::$app->params['googleMapApiKey']);
             $distance = $client->getDistance($searchModel->from, $searchModel->to);
 
             $dataProvider = $searchModel->search();
