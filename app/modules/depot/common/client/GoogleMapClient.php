@@ -2,10 +2,10 @@
 
 namespace modules\depot\common\client;
 
-use yii\httpclient\Client;
 use yii\base\Exception;
 use yii\base\InvalidConfigException;
-use modules\depot\common\client\DummyHttpClient;
+use yii\httpclient\Client;
+use yii\httpclient\Response;
 
 class GoogleMapClient
 {
@@ -15,10 +15,10 @@ class GoogleMapClient
     /** @var string */
     private $key;
 
-    /** @var Client|DummyHttpClient */
+    /** @var Client */
     private $client;
 
-    public function __construct($client, string $key)
+    public function __construct(Client $client, string $key)
     {
         $this->client = $client;
         $this->key = $key;
@@ -43,16 +43,41 @@ class GoogleMapClient
             ])
             ->send();
 
+        return $this->getResponseDistance($response);
+    }
+
+    /**
+     * @param Response $response
+     * @return int
+     * @throws Exception
+     */
+    private function getResponseDistance(Response $response)
+    {
         if (! $response->isOk) {
             throw new Exception('Не удалось получить ответ от API');
         }
 
-        if (isset($response->data['error_message'])) {
-            throw new Exception($response->data['error_message']);
+        $origin = $response->data['origin_addresses'][0] ?? null;
+        $destination = $response->data['destination_addresses'][0] ?? null;
+        $error = $response->data['error_message'] ?? null;
+        $distance = $response->data['rows'][0]['elements'][0]['distance']['value'] ?? null;
+
+        if ($error) {
+            throw new Exception($error);
         }
 
-        // It remains to parse the answer from google
+        if (! $origin) {
+            throw new Exception('Не удалось найти город отправления');
+        }
 
-        return $response->data['distance'] ?? 0;
+        if (! $destination) {
+            throw new Exception('Не удалось найти город назначения');
+        }
+
+        if (! $distance) {
+            throw new Exception('Расстояние не найдено');
+        }
+
+        return round($distance / 1000);
     }
 }

@@ -36,11 +36,7 @@ class DriverController extends Controller
         }
 
         try {
-
-//            $client = new Client();
-            $client = new DummyHttpClient();
-
-            $client = new GoogleMapClient($client, \Yii::$app->params['googleMapApiKey']);
+            $client = new GoogleMapClient(new Client(), \Yii::$app->params['googleMapApiKey']);
             $distance = $client->getDistance($searchModel->from, $searchModel->to);
 
             $dataProvider = $searchModel->search();
